@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чаты — Админка homme</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .admin-wrap { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .chat-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .chat-item {
+            padding: 12px 16px; background: #1a1a1a; border-radius: 8px;
+            cursor: pointer; border: 1px solid #2a2a2a; transition: border-color .2s;
+        }
+        .chat-item:hover { border-color: #e53935; }
+        .chat-item.active { border-color: #e53935; background: #222; }
+        .chat-item .sid { font-size: 12px; color: #888; }
+        .chat-item .last { font-size: 13px; color: #ccc; margin-top: 4px; }
+        .admin-chat-box {
+            background: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;
+            padding: 16px; max-height: 400px; overflow-y: auto; margin-bottom: 12px;
+        }
+        .admin-msg { padding: 8px 12px; border-radius: 8px; font-size: 13px; margin-bottom: 8px; max-width: 80%; }
+        .admin-msg.user { background: #2a2a2a; color: #f0f0f0; }
+        .admin-msg.admin { background: #e53935; color: #fff; margin-left: auto; }
+        .admin-input { display: flex; gap: 8px; }
+        .admin-input input { flex: 1; padding: 10px; border: 1px solid #333; border-radius: 6px; background: #2a2a2a; color: #fff; }
+        .admin-input button { padding: 10px 20px; background: #e53935; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">homme<span>.</span></a>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="admin_chat.html">Чаты</a>
+    </nav>
+</header>
+
+<div class="admin-wrap">
+    <h2 class="section-title">Чаты поддержки</h2>
+    <p class="section-sub">Список активных чатов с посетителями</p>
+
+    <div class="chat-list" id="chat-list">
+        <p style="color:#888;">Загрузка...</p>
+    </div>
+
+    <div id="admin-chat-area" style="display:none;">
+        <h3 style="margin-bottom:12px;">Чат: <span id="admin-session-id"></span></h3>
+        <div class="admin-chat-box" id="admin-chat-box"></div>
+        <div class="admin-input">
+            <input type="text" id="admin-reply" placeholder="Ответить...">
+            <button onclick="sendReply()">Отправить</button>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+var currentSession = null;
+var adminLastId = 0;
+var adminPoll = null;
+
+function loadChats() {
+    fetch('api/chat_sessions.php')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            var list = document.getElementById('chat-list');
+            if (!data.success || data.sessions.length === 0) {
+                list.innerHTML = '<p style="color:#888;">Нет активных чатов</p>';
+                return;
+            }
+            list.innerHTML = '';
+            data.sessions.forEach(function(s) {
+                var div = document.createElement('div');
+                div.className = 'chat-item';
+                div.innerHTML = '<div class="sid">' + s.session_id + '</div><div class="last">' + (s.last_message || 'Нет сообщений') + '</div>';
+                div.onclick = function() { openChat(s.session_id); };
+                list.appendChild(div);
+            });
+        })
+        .catch(function() { document.getElementById('chat-list').innerHTML = '<p style="color:#888;">Ошибка загрузки</p>'; });
+}
+
+function openChat(sid) {
+    currentSession = sid;
+    adminLastId = 0;
+    document.getElementById('admin-session-id').textContent = sid;
+    document.getElementById('admin-chat-area').style.display = 'block';
+    document.getElementById('admin-chat-box').innerHTML = '';
+    loadAdminMessages();
+    if (adminPoll) clearInterval(adminPoll);
+    adminPoll = setInterval(loadAdminMessages, 3000);
+}
+
+function loadAdminMessages() {
+    if (!currentSession) return;
+    fetch('api/chat_get.php?session_id=' + encodeURIComponent(currentSession) + '&last_id=' + adminLastId)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.success) {
+                data.messages.forEach(function(msg) {
+                    var div = document.createElement('div');
+                    div.className = 'admin-msg ' + msg.sender;
+                    div.textContent = msg.message;
+                    document.getElementById('admin-chat-box').appendChild(div);
+                    if (msg.id > adminLastId) adminLastId = msg.id;
+                });
+                var box = document.getElementById('admin-chat-box');
+                box.scrollTop = box.scrollHeight;
+            }
+        })
+        .catch(function() {});
+}
+
+function sendReply() {
+    var input = document.getElementById('admin-reply');
+    var text = input.value.trim();
+    if (!text || !currentSession) return;
+    input.value = '';
+    fetch('api/chat_send.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: currentSession, message: text, sender: 'admin' })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (data.success) {
+            var div = document.createElement('div');
+            div.className = 'admin-msg admin';
+            div.textContent = text;
+            document.getElementById('admin-chat-box').appendChild(div);
+            var box = document.getElementById('admin-chat-box');
+            box.scrollTop = box.scrollHeight;
+        }
+    })
+    .catch(function() {});
+}
+
+loadChats();
+setInterval(loadChats, 10000);
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — homme</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">homme<span>.</span></a>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="newyear.html">Новый год 🎄</a>
+        <a href="delivery.html">Доставка</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="register.html">Регистрация</a>
+        <a href="login.html">Вход</a>
+        <a href="account.html">Кабинет</a>
+        <a href="cart.html" class="cart-link">Корзина (0)</a>
+    </nav>
+</header>
+
+<section>
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-sub">Свяжитесь с нами любым удобным способом</p>
+
+    <div style="max-width:600px; margin:0 auto; text-align:left;">
+        <p><b>Телефон:</b> <a href="tel:+78001234567">8 800 123-45-67</a> (бесплатно по России)</p>
+        <p><b>Email:</b> <a href="mailto:info@homme.ru">info@homme.ru</a></p>
+        <p><b>Адрес:</b> Москва, ул. Примерная, д. 1, офис 100</p>
+        <p><b>Режим работы:</b> Пн–Вс 9:00–21:00</p>
+        <p><b>Telegram:</b> <a href="https://t.me/homme_store" target="_blank">@homme_store</a></p>
+    </div>
+
+    <div style="max-width:600px; margin:40px auto; text-align:left;">
+        <h2>Форма обратной связи</h2>
+        <form class="form" onsubmit="return sendForm(this)">
+            <label for="name">Имя</label>
+            <input type="text" id="name" placeholder="Ваше имя" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="email@mail.ru" required>
+            <label for="msg">Сообщение</label>
+            <input type="text" id="msg" placeholder="Ваш вопрос" required>
+            <button type="submit">Отправить</button>
+            <p class="note" style="display:none; color:#9f9; margin-top:10px;">Сообщение отправлено!</p>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-bottom">© 2026 homme — магазин для дома</div>
+</footer>
+
+<script src="main.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>

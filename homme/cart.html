@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина — homme</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">homme<span>.</span></a>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="newyear.html">Новый год 🎄</a>
+        <a href="delivery.html">Доставка</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="register.html">Регистрация</a>
+        <a href="login.html">Вход</a>
+        <a href="account.html">Кабинет</a>
+        <a href="cart.html" class="cart-link">Корзина (0)</a>
+    </nav>
+</header>
+
+<section>
+    <h2 class="section-title">Корзина</h2>
+    <p id="cart-info" class="section-sub">В корзине 0 товаров</p>
+    <div id="cart-items" style="max-width:600px; margin:0 auto;"></div>
+    <div style="max-width:600px; margin:20px auto; text-align:right; font-size:20px; font-weight:700;">
+        Итого: <span id="cart-total">0 ₽</span>
+    </div>
+    <div style="max-width:600px; margin:20px auto; display:flex; gap:12px; justify-content:flex-end;">
+        <button onclick="clearCart()">Очистить</button>
+        <button onclick="checkout()">Оформить заказ</button>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-bottom">© 2026 homme — магазин для дома</div>
+</footer>
+
+<script src="main.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>

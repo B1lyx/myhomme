@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — homme</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">homme<span>.</span></a>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="newyear.html">Новый год 🎄</a>
+        <a href="delivery.html">Доставка</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="register.html">Регистрация</a>
+        <a href="login.html">Вход</a>
+        <a href="account.html">Кабинет</a>
+        <a href="cart.html" class="cart-link">Корзина (0)</a>
+    </nav>
+</header>
+
+<section>
+    <h2 class="section-title">Каталог товаров</h2>
+    <p class="section-sub">Более 5000 товаров для дома · Бесплатная доставка от 10 000 ₽</p>
+
+    <!-- Фильтры -->
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
+        <button style="background:#e53935; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Все</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Мебель</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Свет</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Декор</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Растения</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Спальня</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Кухня</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Хранение</button>
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:6px 14px; border-radius:4px; font-size:13px; cursor:pointer;">Ванная</button>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+        <span style="font-size:14px; color:#888;">Найдено 1247 товаров</span>
+        <select style="padding:8px 12px; border:1px solid #ddd; border-radius:4px; font-size:13px; background:#fff;">
+            <option>По популярности</option>
+            <option>Сначала дешёвые</option>
+            <option>Сначала дорогие</option>
+            <option>По названию</option>
+            <option>По рейтингу</option>
+        </select>
+    </div>
+
+    <div class="products">
+        <div class="product">
+            <span class="badge hit">Хит</span>
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Диван">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Мебель</div>
+                <div class="product-name">Диван «Комфорт» 3-местный</div>
+                <div class="product-price">42 990 ₽ <span class="old">54 990 ₽</span></div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <span class="badge new">Новинка</span>
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Кресло">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Мебель</div>
+                <div class="product-name">Кресло «Уют» с подлокотниками</div>
+                <div class="product-price">12 990 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Лампа">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Свет</div>
+                <div class="product-name">Торшер «Лофт» с регулировкой</div>
+                <div class="product-price">6 490 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <span class="badge sale">-25%</span>
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Люстра">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Свет</div>
+                <div class="product-name">Люстра подвесная «Модерн»</div>
+                <div class="product-price">8 990 ₽ <span class="old">11 990 ₽</span></div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Ваза">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Декор</div>
+                <div class="product-name">Ваза керамическая «Минимал»</div>
+                <div class="product-price">2 190 ₽ <span class="old">2 890 ₽</span></div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Зеркало">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Декор</div>
+                <div class="product-name">Зеркало настенное «Раунд» 60 см</div>
+                <div class="product-price">4 290 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Монстера">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Растения</div>
+                <div class="product-name">Монстера в кашпо</div>
+                <div class="product-price">3 290 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <span class="badge hit">Хит</span>
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Кровать">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Спальня</div>
+                <div class="product-name">Кровать «Скандинавия» 160×200</div>
+                <div class="product-price">34 990 ₽ <span class="old">42 990 ₽</span></div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Стол">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Кухня</div>
+                <div class="product-name">Обеденный стол «Дуб» 140 см</div>
+                <div class="product-price">18 990 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Полка">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Хранение</div>
+                <div class="product-name">Стеллаж «Лофт» 5 полок</div>
+                <div class="product-price">7 490 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Зеркало">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Ванная</div>
+                <div class="product-name">Зеркало с LED-подсветкой 60 см</div>
+                <div class="product-price">5 990 ₽ <span class="old">7 990 ₽</span></div>
+                <button>В корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <span class="badge new">Новинка</span>
+            <div class="product-img-wrap">
+                <img class="product-img" src="https://placehold.co/400x300/1a1a1a/e0e0e0?text=Товар" alt="Стул">
+                <div class="product-overlay"><button class="quick-view">Быстрый просмотр</button></div>
+            </div>
+            <div class="product-body">
+                <div class="product-cat">Мебель</div>
+                <div class="product-name">Стул обеденный «Скандинавия»</div>
+                <div class="product-price">4 290 ₽</div>
+                <button>В корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Пагинация -->
+    <div style="display:flex; justify-content:center; gap:8px; margin-top:32px;">
+        <button style="background:#1a1a1a; color:#fff; border:none; padding:8px 14px; border-radius:4px; cursor:pointer;">1</button>
+        <button style="background:#f0f0f0; color:#333; border:1px solid #ddd; padding:8px 14px; border-radius:4px; cursor:pointer;">2</button>
+        <button style="background:#f0f0f0; color:#333; border:1px solid #ddd; padding:8px 14px; border-radius:4px; cursor:pointer;">3</button>
+        <button style="background:#f0f0f0; color:#333; border:1px solid #ddd; padding:8px 14px; border-radius:4px; cursor:pointer;">→</button>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>homme</h4>
+            <p style="font-size:14px; color:#aaa;">Магазин мебели и товаров для дома. Делаем жильё уютнее с 2024 года.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Каталог</h4>
+            <a href="catalog.html">Мебель</a>
+            <a href="catalog.html">Свет</a>
+            <a href="catalog.html">Декор</a>
+            <a href="catalog.html">Растения</a>
+            <a href="newyear.html">Новый год 🎄</a>
+        </div>
+        <div class="footer-col">
+            <h4>Покупателям</h4>
+            <a href="delivery.html">Доставка</a>
+            <a href="delivery.html">Оплата</a>
+            <a href="delivery.html">Возврат</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <a href="tel:+78001234567">8 800 123-45-67</a>
+            <a href="mailto:info@homme.ru">info@homme.ru</a>
+            <span style="display:block; font-size:14px; color:#aaa; margin-top:8px;">Пн–Вс 9:00–21:00</span>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 homme — магазин для дома
+    </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>
